@@ -4,7 +4,7 @@
 </script>
 
 <div id="experienceSection" class="flex flex-col justify-start w-full mt-12">
-    <div class="text-faint text-xs font-extrabold uppercase">Personal projects</div>
+    <div class="text-faint text-xs font-extrabold uppercase">Projects</div>
     <div class="grid items-start justify-center mt-6 grid-cols-1 gap-6 sm:grid-cols-2">
         {#each data as project}
             <div class="p-4 flex flex-col bg-radial from-background-secondary to-background rounded-md border border-background-tertiary">

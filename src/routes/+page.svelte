@@ -9,41 +9,28 @@
 
     const portfolioContent: any = {
         introduction: {
-            name: "Jonathan Smith",
-            occupation: "Startup Founder @ Resend",
-            description: "A software engineer from Dallas Texas. Have experience using React, Tailwind, Svelte and more. Looking for new and exciting projects in the software space. Let's connect!",
+            name: "Sean Ho Junxian",
+            occupation: "Computer Science and Design Undergraduate",
+            description:
+                "Computer Science and Design undergraduate at SUTD.",
             avatar: "https://avatars.githubusercontent.com/u/04?v=4",
-            socials: {
-                x: "https://x.com/test",
-                email: "mailto:hello@test.com",
-                linkedin: "https://www.linkedin.com/in/test"
-            }
+            xSocialLink: "https://www.linkedin.com/in/seanhojunxian/",
+            emailAddress: "mailto:seanhojunxian@gmail.com",
+            linkedInSocialLink: "https://www.linkedin.com/in/seanhojunxian/"
         },
         experiences: [
             {
-                company: "Apple",
-                role: "Software Engineer II",
-                duration: "Present",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA5r0_FrSjm2OgttQLwh_CnVCnzbJ7dLv6oA&s"
-            },
-            {
-                company: "Meta",
-                role: "Senior Frontend Developer",
-                duration: "Jan. 2023 to Nov. 2024",
-                image: "https://pbs.twimg.com/profile_images/1455242126275526659/zNCAAELg_400x400.png"
-            },
-            {
-                company: "Google",
-                role: "Frontend Developer",
-                duration: "Jan. 2020 to Dec. 2022",
-                image: "https://images.ctfassets.net/y2vv62dcl0ut/4cecci3Vom9aGlDCMwLm0g/cc93483ede67e93325719a423254bf1d/square.jpg"
+                company: "The Straits Times",
+                role: "Data Visualisation Developer Intern",
+                duration: "Feb 2025 – Aug 2025",
+                image: "/STlogo.png"
             }
         ],
         education: {
-            image: "https://admission.stanford.edu/assets/cardinal/images/stanford_block_s_logo2.jpg",
-            school: "Stanford University",
-            degree: "Bachelor of Science in Computer Science",
-            graduationYear: "2022"
+            image: "SUTDlogo.png",
+            school: "Singapore University of Technology and Design (SUTD)",
+            degree: "Bachelor of Engineering (BEng), Computer Science and Design",
+            graduationYear: "2026"
         },
         skills: [
             {
@@ -89,18 +76,20 @@
         ],
         projects: [
             {
-                name: "Clutch Maps",
-                technology: "Svelte",
-                description: "Clutch Maps is a map based web app for finding fun driving routes near you. Built mainly using Svelte and the Mapbox API.",
-                image: "Basic.png",
-                link: "https://clutchmaps.com"
+                name: "60 Singapore Objects",
+                technology: "Data visualisation, interactive storytelling",
+                description:
+                    "An interactive feature for SG60 that showcases 60 iconic objects from Singapore's history through a retro stereoscope-inspired experience.",
+                image: "https://media.licdn.com/dms/image/sync/v2/D5627AQFFsAMuu6nYdg/articleshare-shrink_160/B56ZfyNsikHoAk-/0/1752115366631?e=1773680400&v=beta&t=9B7R5w_1ttrliB6-3bK1FpbGaGWJzKavfrMhNq8GdU4",
+                link: "https://www.straitstimes.com/multimedia/graphics/2025/07/SG60-objects/index.html?shell"
             },
             {
-                name: "Coastal UI",
-                technology: "Svelte",
-                description: "A Svelte 5 Component library which uses Tailwind 4 and Lucide Icons. Useful copy-paste components, for free.",
-                image: "coastal2.png",
-                link: "https://coastalui.com"
+                name: "A love letter: 60 tastes, traits and things that make Singapore home",
+                technology: "Data visualisation, longform feature",
+                description:
+                    "A longform interactive that celebrates Singapore’s 60th birthday through 60 defining tastes, traits and things that make the country feel like home.",
+                image: "https://dummyimage.com/640x360/111111/ffffff&text=60+Tastes+Traits+Things",
+                link: "https://www.straitstimes.com/multimedia/graphics/2025/08/sg60-love-letter/index.html"
             }
         ],
         gallery: [
@@ -131,7 +120,7 @@
         <div class="w-full h-[1px] bg-gradient-to-r from-zinc-900 to-zinc-900 via-zinc-800 my-12 mb-16"></div>
         <div class="mb-4 flex flex-col items-center">
             <div class="text-3xl text-primary font-bold">My Work</div>
-            <div class="text-faint font-thin mt-1">Collected across various projects.</div>
+            <!-- <div class="text-faint font-thin mt-1">Collected across various projects.</div> -->
         </div>
         <PersonalProjects data={portfolioContent.projects}/>
         <Gallery data={portfolioContent.gallery}/>
