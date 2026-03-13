@@ -1,62 +1,182 @@
 <script lang="ts">
-	import Button1 from "$lib/components/Button1.svelte";
-	import { ChevronLeft, ChevronRight, ExternalLinkIcon } from "lucide-svelte";
-	import { fly } from "svelte/transition";
-
-    let currentIndex = $state(0);
+    import { ChevronLeft, ChevronRight, X } from "lucide-svelte";
     let { data } = $props();
 
-    function goNext() {
-        currentIndex = (currentIndex + 1) % data.length;
+    let scrollContainer: HTMLElement;
+    let selectedItem = $state(null);
+
+    function scrollLeft() {
+        if (scrollContainer) {
+            scrollContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        }
     }
 
-    function goPrev() {
-        currentIndex = (currentIndex - 1 + data.length) % data.length;
+    function scrollRight() {
+        if (scrollContainer) {
+            scrollContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        }
     }
 
+    function openModal(item: any) {
+        selectedItem = item;
+    }
+
+    function closeModal() {
+        selectedItem = null;
+    }
 </script>
 
-<div id="gallerySection" class="flex flex-col justify-start w-full mt-12 scroll-mt-24">
-    <div class="text-faint text-xs font-extrabold uppercase">Gallery</div>
-    <div class="w-full h-[450px] mt-6 rounded-md bg-radial from-background-secondary to-background overflow-hidden relative border border-background-tertiary">
-        <div class="absolute inset-0 flex items-center justify-center">
-            {#key currentIndex}
-                <div 
-                    in:fly={{ y: 4, duration: 150, delay: 150 }} 
-                    out:fly={{ y: 4, duration: 150 }}
-                    class="absolute inset-0 flex items-center justify-center"
-                >
-                    <div class="relative m-14 mt-8">
-                        <!-- svelte-ignore a11y_missing_attribute -->
-                         {#if data[currentIndex].image != null }
-                            <img 
-                                src={data[currentIndex].image} 
-                                class="object-contain max-h-[350px] rounded-md"
-                            />
-                        {:else}
-                            {@const Component = data[currentIndex].component}
-                            <Component />
-                        {/if}
-                        
-                        <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-faint text-xs text-center font-medium min-w-[300px]">
-                            {data[currentIndex].text}
-                        </div>
-                    </div>
+<div class="mt-6 relative">
+    <button
+        onclick={scrollLeft}
+        class="absolute left-0 top-1/2 -translate-y-1/2 h-full w-12 z-10 flex items-center justify-center"
+        aria-label="Scroll left"
+    >
+        <div class="rounded-full bg-background/80 backdrop-blur-sm p-2 hover:bg-background/90 transition-colors">
+            <ChevronLeft class="w-5 h-5 text-primary" />
+        </div>
+    </button>
+    <div
+        bind:this={scrollContainer}
+        class="flex gap-4 overflow-x-auto pb-4 hide-scrollbar"
+    >
+        {#each data as item}
+            <div
+                role="button"
+                tabindex="0"
+                class="gallery-item"
+                onclick={() => openModal(item)}
+                onkeydown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') openModal(item);
+                }}
+            >
+                <img
+                    src={item.image}
+                    alt={item.text}
+                    class="gallery-image"
+                />
+                <div class="gallery-text">
+                    {item.text}
                 </div>
-            {/key}
+            </div>
+        {/each}
+    </div>
+    <button
+        onclick={scrollRight}
+        class="absolute right-0 top-1/2 -translate-y-1/2 h-full w-12 z-10 flex items-center justify-center"
+        aria-label="Scroll right"
+    >
+        <div class="rounded-full bg-background/80 backdrop-blur-sm p-2 hover:bg-background/90 transition-colors">
+            <ChevronRight class="w-5 h-5 text-primary" />
         </div>
-        <div class="flex space-x-2 absolute bottom-2 left-3 text-faint/70 text-xs">
-            {currentIndex+1}
-            /
-            {data.length}
-        </div>
-        <div class="flex space-x-2 absolute bottom-2 right-2">
-            <button onclick={goPrev} aria-label="goLeftGallery" class="w-8 h-8 cursor-pointer bg-background hover:bg-background-secondary/50 text-[#EEEEE4] rounded-full flex items-center justify-center border border-background-tertiary">
-                <ChevronLeft class="h-4 w-4"/>
+    </button>
+</div>
+
+{#if selectedItem}
+    <div
+        class="modal-backdrop"
+        onclick={closeModal}
+        onkeydown={(event) => {
+            if (event.key === 'Escape') closeModal();
+        }}
+    >
+        <div
+            role="dialog"
+            tabindex="-1"
+            class="modal-content"
+            onpointerdown={(e) => e.stopPropagation()}
+        >
+            <button
+                onclick={closeModal}
+                class="close-button"
+                aria-label="Close modal"
+            >
+                <X class="w-6 h-6" />
             </button>
-            <button onclick={goNext} aria-label="goLeftGallery" class="w-8 h-8 cursor-pointer bg-background hover:bg-background-secondary/50 text-[#EEEEE4] rounded-full flex items-center justify-center border border-background-tertiary">
-                <ChevronRight class="h-4 w-4"/>
-            </button>
+            <img
+                src={selectedItem.image}
+                alt={selectedItem.text}
+                class="modal-image"
+            />
+            <div class="text-secondary">
+                {selectedItem.text}
+            </div>
         </div>
     </div>
-</div>
+{/if}
+
+<style>
+    /* Styles for gallery items */
+    .gallery-item {
+        min-width: 260px;
+        max-width: 260px;
+        flex-shrink: 0;
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+            padding: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .gallery-item:hover {
+        transform: scale(1.05);
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    .gallery-image {
+        width: 100%;
+        height: 10rem;
+        border-radius: 0.75rem;
+        object-fit: cover;
+    }
+
+    .gallery-text {
+        margin-top: 1rem;
+        font-size: 0.875rem;
+        color: var(--color-secondary);
+    }
+
+    /* Modal styles */
+    .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+        position: relative;
+        max-width: 28rem;
+        width: 100%;
+        margin: 0 1rem;
+        background: rgba(11, 11, 12, 0.9);
+        backdrop-filter: blur(12px);
+        border-radius: 1rem;
+        padding: 1.5rem;
+    }
+
+    .modal-image {
+        width: 100%;
+        height: 16rem;
+        border-radius: 0.75rem;
+        object-fit: cover;
+        margin-bottom: 1rem;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: var(--color-secondary);
+        transition: color 0.2s;
+    }
+
+    .close-button:hover {
+        color: var(--color-primary);
+    }
+</style>

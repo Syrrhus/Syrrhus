@@ -18,13 +18,25 @@
 
 -->
 
-<section class="w-full">
-    <div class="text-primary text-5xl sm:text-6xl font-semibold tracking-tight">
-        {data.name}
+<section id="top" class="w-full">
+    <div class="hero-name">
+        {data.displayName}
     </div>
 
-    <div id="aboutSection" class="mt-10 max-w-[70ch]">
-        <div class="text-faint text-xs font-extrabold uppercase">About</div>
-        <div class="text-primary mt-3 text-lg leading-relaxed">{data.description}</div>
+    <div class="mt-4 text-secondary text-base sm:text-lg">
+        {data.subtitle}
     </div>
 </section>
+
+<style>
+    .hero-name {
+        color: var(--color-primary);
+        /* font-family: var(--font-serif); */
+        font-weight: 100;
+        text-transform: uppercase;
+        letter-spacing: 0.0em;
+        white-space: pre-line;
+        font-size: clamp(3rem, 7vw, 6.5rem);
+        line-height: 1.0;
+    }
+</style>

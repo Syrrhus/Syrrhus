@@ -1,211 +1,93 @@
 <script lang="ts">
 	import Introduction from './Introduction.svelte';
 	import Experience from './Experience.svelte';
-	import Education from './Education.svelte';
-	import Skills from './Skills.svelte';
 	import PersonalProjects from './PersonalProjects.svelte';
 	import Gallery from './Gallery.svelte';
-    import Button1 from "$lib/components/Button1.svelte";
-
-    const portfolioContent: any = {
-        introduction: {
-            name: "Sean Ho Junxian",
-            occupation: "Computer Science and Design Undergraduate",
-            description:
-                "Computer Science and Design undergraduate at SUTD.",
-            avatar: "https://avatars.githubusercontent.com/u/04?v=4",
-            xSocialLink: "https://www.linkedin.com/in/seanhojunxian/",
-            emailAddress: "mailto:seanhojunxian@gmail.com",
-            linkedInSocialLink: "https://www.linkedin.com/in/seanhojunxian/"
-        },
-        experiences: [
-            {
-                company: "The Straits Times",
-                role: "Data Visualisation Developer Intern",
-                duration: "Feb 2025 – Aug 2025",
-                image: "/STlogo.png"
-            }
-        ],
-        education: {
-            image: "/SUTDlogo.png",
-            school: "Singapore University of Technology and Design (SUTD)",
-            degree: "Bachelor of Engineering (BEng), Computer Science and Design",
-            graduationYear: "2026"
-        },
-        skills: [
-            {
-                icon: `<svg class="h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19.8 3.77a6.25 6.25 0 0 0-8.63-1.913L6.11 5.081a6.25 6.25 0 0 0-1.973 8.532a6.25 6.25 0 0 0 8.693 8.53l5.06-3.224a6.25 6.25 0 0 0 1.974-8.532A6.25 6.25 0 0 0 19.8 3.77m-1.352 5.004A6.26 6.26 0 0 0 15.65 7.5a1 1 0 0 0-1.525-1.003L9.066 9.72a1 1 0 1 0 1.075 1.686l2.109-1.343a4.25 4.25 0 1 1 4.567 7.17l-5.06 3.223a4.25 4.25 0 0 1-6.203-5.23A6.25 6.25 0 0 0 8.35 16.5a1 1 0 0 0 1.525 1.003l5.06-3.224a1 1 0 0 0-1.074-1.687l-2.109 1.344a4.25 4.25 0 0 1-4.567-7.17l5.06-3.223a4.25 4.25 0 0 1 6.203 5.23"/></svg>`,
-                text: "Svelte"
-            }
-        ],
-        projects: [
-            {
-                name: "60 Singapore Objects",
-                technology: "Data visualisation, interactive storytelling",
-                description:
-                    "An interactive feature for SG60 that showcases 60 iconic objects from Singapore's history through a retro stereoscope-inspired experience.",
-                image: "https://media.licdn.com/dms/image/sync/v2/D5627AQFFsAMuu6nYdg/articleshare-shrink_160/B56ZfyNsikHoAk-/0/1752115366631?e=1773680400&v=beta&t=9B7R5w_1ttrliB6-3bK1FpbGaGWJzKavfrMhNq8GdU4",
-                link: "https://www.straitstimes.com/multimedia/graphics/2025/07/SG60-objects/index.html?shell"
-            },
-            {
-                name: "A love letter: 60 tastes, traits and things that make Singapore home",
-                technology: "Data visualisation, longform feature",
-                description:
-                    "A longform interactive that celebrates Singapore’s 60th birthday through 60 defining tastes, traits and things that make the country feel like home.",
-                image: "https://dummyimage.com/640x360/111111/ffffff&text=60+Tastes+Traits+Things",
-                link: "https://www.straitstimes.com/multimedia/graphics/2025/08/sg60-love-letter/index.html"
-            }
-        ],
-        gallery: [
-            {
-                image: "seattle1.jpg",
-                text: "Show your hometown!"
-            },
-            {
-                image: "seattle2.jpg",
-                text: "My office."
-            },
-            {
-                component: Button1,
-                text: "You can even show off components!"
-            }
-        ]
-    };
-
-    /*
-     * Older sections are kept below (commented) in case
-     * you want to re-enable them later.
-     */
-    /*
-        experiences: [
-            {
-                company: "The Straits Times",
-                role: "Data Visualisation Developer Intern",
-                duration: "Feb 2025 – Aug 2025",
-                image: "/STlogo.png"
-            }
-        ],
-        education: {
-            image: "SUTDlogo.png",
-            school: "Singapore University of Technology and Design (SUTD)",
-            degree: "Bachelor of Engineering (BEng), Computer Science and Design",
-            graduationYear: "2026"
-        },
-        skills: [
-            {
-                icon: `<svg class="h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19.8 3.77a6.25 6.25 0 0 0-8.63-1.913L6.11 5.081a6.25 6.25 0 0 0-1.973 8.532a6.25 6.25 0 0 0 8.693 8.53l5.06-3.224a6.25 6.25 0 0 0 1.974-8.532A6.25 6.25 0 0 0 19.8 3.77m-1.352 5.004A6.26 6.26 0 0 0 15.65 7.5a1 1 0 0 0-1.525-1.003L9.066 9.72a1 1 0 1 0 1.075 1.686l2.109-1.343a4.25 4.25 0 1 1 4.567 7.17l-5.06 3.223a4.25 4.25 0 0 1-6.203-5.23A6.25 6.25 0 0 0 8.35 16.5a1 1 0 0 0 1.525 1.003l5.06-3.224a1 1 0 0 0-1.074-1.687l-2.109 1.344a4.25 4.25 0 0 1-4.567-7.17l5.06-3.223a4.25 4.25 0 0 1 6.203 5.23"/></svg>`,
-                text: "Svelte"
-            },
-            {
-                icon: `<svg class="h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>`,
-                text: "Github"
-            },
-            {
-                icon: `<svg class="h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10.11c1.03 0 1.87.84 1.87 1.89c0 1-.84 1.85-1.87 1.85S10.13 13 10.13 12c0-1.05.84-1.89 1.87-1.89M7.37 20c.63.38 2.01-.2 3.6-1.7c-.52-.59-1.03-1.23-1.51-1.9a23 23 0 0 1-2.4-.36c-.51 2.14-.32 3.61.31 3.96m.71-5.74l-.29-.51c-.11.29-.22.58-.29.86c.27.06.57.11.88.16zm6.54-.76l.81-1.5l-.81-1.5c-.3-.53-.62-1-.91-1.47C13.17 9 12.6 9 12 9s-1.17 0-1.71.03c-.29.47-.61.94-.91 1.47L8.57 12l.81 1.5c.3.53.62 1 .91 1.47c.54.03 1.11.03 1.71.03s1.17 0 1.71-.03c.29-.47.61-.94.91-1.47M12 6.78c-.19.22-.39.45-.59.72h1.18c-.2-.27-.4-.5-.59-.72m0 10.44c.19-.22.39-.45.59-.72h-1.18c.2.27.4.5.59.72M16.62 4c-.62-.38-2 .2-3.59 1.7c.52.59 1.03 1.23 1.51 1.9c.82.08 1.63.2 2.4.36c.51-2.14.32-3.61-.32-3.96m-.7 5.74l.29.51c.11-.29.22-.58.29-.86c-.27-.06-.57-.11-.88-.16zm1.45-7.05c1.47.84 1.63 3.05 1.01 5.63c2.54.75 4.37 1.99 4.37 3.68s-1.83 2.93-4.37 3.68c.62 2.58.46 4.79-1.01 5.63c-1.46.84-3.45-.12-5.37-1.95c-1.92 1.83-3.91 2.79-5.38 1.95c-1.46-.84-1.62-3.05-1-5.63c-2.54-.75-4.37-1.99-4.37-3.68s1.83-2.93 4.37-3.68c-.62-2.58-.46-4.79 1-5.63c1.47-.84 3.46.12 5.38 1.95c1.92-1.83 3.91-2.79 5.37-1.95M17.08 12c.34.75.64 1.5.89 2.26c2.1-.63 3.28-1.53 3.28-2.26s-1.18-1.63-3.28-2.26c-.25.76-.55 1.51-.89 2.26M6.92 12c-.34-.75-.64-1.5-.89-2.26c-2.1.63-3.28 1.53-3.28 2.26s1.18 1.63 3.28 2.26c.25-.76.55-1.51.89-2.26m9 2.26l-.3.51c.31-.05.61-.1.88-.16c-.07-.28-.18-.57-.29-.86zm-2.89 4.04c1.59 1.5 2.97 2.08 3.59 1.7c.64-.35.83-1.82.32-3.96c-.77.16-1.58.28-2.4.36c-.48.67-.99 1.31-1.51 1.9M8.08 9.74l.3-.51c-.31.05-.61.1-.88.16c.07.28.18.57.29.86zm2.89-4.04C9.38 4.2 8 3.62 7.37 4c-.63.35-.82 1.82-.31 3.96a23 23 0 0 1 2.4-.36c.48-.67.99-1.31 1.51-1.9"/></svg>`,
-                text: "React"
-            },
-            {
-                icon: `<svg class="h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3.936L4.361 8.168L6.45 23.84L16 29.145l9.55-5.307l2.089-15.67zm0 2.128l9.443 3.434l-1.744 13.08L16 26.855l-7.7-4.277l-1.743-13.08zM16 8l-6 14h2l1.29-3h5.42L20 22h2zm0 4.55l.02.06l.7 1.75L17.85 17h-3.7l1.13-2.64l.7-1.75z"/></svg>`,
-                text: "Angular"
-            },
-            {
-                icon: `<svg class="h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M3 3v18h18V3zm9.813 14.023c0 1.77-1.045 2.584-2.555 2.584c-1.335 0-2.12-.697-2.526-1.568l1.394-.871c.232.493.493.87 1.103.87c.58 0 .9-.203.9-1.073v-5.69h1.684zm4.006 2.584c-1.567 0-2.583-.784-3.106-1.713l1.394-.813c.377.58.87 1.016 1.683 1.016c.697 0 1.133-.32 1.133-.871c0-.58-.436-.784-1.22-1.133l-.406-.174c-1.22-.493-2.033-1.19-2.033-2.584c0-1.277.93-2.206 2.468-2.206c1.075 0 1.83.378 2.38 1.364l-1.305.871c-.29-.493-.581-.725-1.104-.725c-.493 0-.813.32-.813.726c0 .493.32.696 1.017 1.016l.406.174c1.422.61 2.264 1.22 2.264 2.67c.03 1.54-1.16 2.381-2.758 2.381"/></svg>`,
-                text: "JavaScript"
-            },
-            {
-                icon: `<svg class="h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M19.131 3H4.869c-.955 0-1.73.787-1.73 1.758v14.484c0 .97.775 1.758 1.73 1.758h14.262c.956 0 1.73-.787 1.73-1.758V4.758c0-.97-.774-1.758-1.73-1.758m-5.712 9.984h-2.215v6.434H9.439v-6.434H7.223v-1.441h6.196zm5.712 5.277c-.139.317-.377.552-.658.739a3 3 0 0 1-.969.386a5.6 5.6 0 0 1-1.177.12a6.5 6.5 0 0 1-1.211-.11a3.7 3.7 0 0 1-1.004-.33v-1.689l-.066-.053l.066-.015v.068q.441.357.972.545c.347.133.727.2 1.108.2c.242 0 .426-.021.589-.06a1.4 1.4 0 0 0 .415-.168a.7.7 0 0 0 .246-.253a.7.7 0 0 0-.052-.738a1.3 1.3 0 0 0-.346-.335a3 3 0 0 0-.52-.295c-.207-.095-.418-.194-.657-.292c-.589-.281-1.053-.562-1.35-.95c-.301-.35-.45-.808-.45-1.335c0-.422.08-.76.242-1.055c.173-.316.377-.548.658-.738c.277-.193.588-.334.969-.422c.38-.088.762-.133 1.177-.133s.762.024 1.073.073c.311.05.602.127.865.229v1.652a2.3 2.3 0 0 0-.415-.242a3.8 3.8 0 0 0-.97-.275a3 3 0 0 0-.45-.033a2.4 2.4 0 0 0-.553.057a1.3 1.3 0 0 0-.416.161a.8.8 0 0 0-.26.25a.6.6 0 0 0-.093.327q0 .194.104.351q.103.152.295.296c.114.091.27.183.45.274c.207.091.394.183.623.278c.311.133.588.281.83.422c.243.14.447.305.623.492c.187.175.322.387.416.633s.142.523.142.843c0 .457-.108.809-.246 1.125"/></svg>`,
-                text: "TypeScript"
-            },
-            {
-                icon: `<svg class="h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M23 21.648H1L12 2.352z"/></svg>`,
-                text: "Vercel"
-            },
-            {
-                icon: `<svg class="h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M3.084 15.25c-1.664 0-2.6-1.912-1.58-3.226L10.21.806C10.794.054 12 .466 12 1.42v7.33h8.916c1.663 0 2.6 1.912 1.58 3.226L13.79 23.194c-.584.752-1.79.34-1.79-.613V15.25z"/></svg>`,
-                text: "Supabase"
-            },
-            {
-                icon: `<svg class="h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10m4-14h-1.35v4H16zM9.346 9.71l6.059 7.828l1.054-.809L9.683 8H8v7.997h1.346z"/></svg>`,
-                text: "Next.js"
-            },
-            {
-                icon: `<svg class="h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M19.14 7.5A2.86 2.86 0 0 1 22 10.36v3.78A2.86 2.86 0 0 1 19.14 17H12c0 .39.32.96.71.96H17v1.68a2.86 2.86 0 0 1-2.86 2.86H9.86A2.86 2.86 0 0 1 7 19.64v-3.75a2.85 2.85 0 0 1 2.86-2.85h5.25a2.85 2.85 0 0 0 2.85-2.86V7.5zm-4.28 11.79c-.4 0-.72.3-.72.89s.32.71.72.71a.71.71 0 0 0 .71-.71c0-.59-.32-.89-.71-.89m-10-1.79A2.86 2.86 0 0 1 2 14.64v-3.78A2.86 2.86 0 0 1 4.86 8H12c0-.39-.32-.96-.71-.96H7V5.36A2.86 2.86 0 0 1 9.86 2.5h4.28A2.86 2.86 0 0 1 17 5.36v3.75a2.85 2.85 0 0 1-2.86 2.85H8.89a2.85 2.85 0 0 0-2.85 2.86v2.68zM9.14 5.71c.4 0 .72-.3.72-.89s-.32-.71-.72-.71c-.39 0-.71.12-.71.71s.32.89.71.89"/></svg>`,
-                text: "Python"
-            }
-        ],
-        projects: [
-            {
-                name: "60 Singapore Objects",
-                technology: "Data visualisation, interactive storytelling",
-                description:
-                    "An interactive feature for SG60 that showcases 60 iconic objects from Singapore's history through a retro stereoscope-inspired experience.",
-                image: "https://media.licdn.com/dms/image/sync/v2/D5627AQFFsAMuu6nYdg/articleshare-shrink_160/B56ZfyNsikHoAk-/0/1752115366631?e=1773680400&v=beta&t=9B7R5w_1ttrliB6-3bK1FpbGaGWJzKavfrMhNq8GdU4",
-                link: "https://www.straitstimes.com/multimedia/graphics/2025/07/SG60-objects/index.html?shell"
-            },
-            {
-                name: "A love letter: 60 tastes, traits and things that make Singapore home",
-                technology: "Data visualisation, longform feature",
-                description:
-                    "A longform interactive that celebrates Singapore’s 60th birthday through 60 defining tastes, traits and things that make the country feel like home.",
-                image: "https://dummyimage.com/640x360/111111/ffffff&text=60+Tastes+Traits+Things",
-                link: "https://www.straitstimes.com/multimedia/graphics/2025/08/sg60-love-letter/index.html"
-            }
-        ],
-        gallery: [
-            {
-                image: "seattle1.jpg",
-                text: "Show your hometown!"
-            },
-            {
-                image: "seattle2.jpg",
-                text: "My office."
-            },
-            {
-                component: Button1,
-                text: "You can even show off components!"
-            }
-        ]
-    }
-    */
-
+    import { portfolioContent } from '$lib/portfolioData';
 </script>
 
-<div
-    class="w-full overflow-x-hidden bg-background"
->
+<div class="w-full overflow-x-hidden bg-background">
     <div
         class="relative w-full"
         style="background-image: url('/Cloud-upscaled.png'); background-size: cover; background-position: center; background-repeat: no-repeat;"
     >
-        <nav class="fixed top-0 left-0 right-0 z-20 bg-transparent">
+        <div class="absolute inset-0 bg-background/20"></div>
+
+        <nav class="fixed inset-x-0 top-0 z-30">
             <div class="mx-auto w-full max-w-[1100px] px-6 sm:px-10 h-14 flex items-center justify-between">
-                <a href="#top" class="text-primary font-semibold tracking-tight">Sean Ho Junxian</a>
-                <div class="flex items-center gap-4 text-sm text-faint">
-                    <a class="hover:text-secondary" href="#aboutSection">About</a>
-                    <a class="hover:text-secondary" href="#experienceSection">Experience</a>
-                    <a class="hover:text-secondary" href="#educationSection">Education</a>
-                    <a class="hover:text-secondary" href="#skillsSection">Skills</a>
-                    <a class="hover:text-secondary" href="#projectsSection">Projects</a>
-                    <a class="hover:text-secondary" href="#gallerySection">Gallery</a>
+                <a href="#top" class="text-primary font-semibold tracking-tight text-title">S.H.J</a>
+                <div class="flex items-center gap-6 text-sm text-secondary">
+                    <a class="hover:text-primary" href="#experienceSection">Experience</a>
+                    <a class="hover:text-primary" href="#projectsSection">Projects</a>
+                    <a class="hover:text-primary" href="#gallerySection">Art</a>
+                    <a class="hover:text-primary" href="#contactSection">Contact</a>
                 </div>
             </div>
         </nav>
 
-        <!-- Make page height longer over the background image. -->
-        <div id="top" class="min-h-[320vh]">
-            <div class="mx-auto w-full max-w-[1100px] px-6 sm:px-10 pb-20">
-                <div class="min-h-screen pt-24 flex items-center">
-                    <Introduction data={portfolioContent.introduction} />
+        <div class="relative z-10 min-h-screen flex items-center px-6 sm:px-10">
+            <div class="mx-auto w-full max-w-[1100px]">
+                <Introduction data={portfolioContent.introduction} />
+            </div>
+        </div>
+
+        <div class="pb-24">
+            <section id="experienceSection" class="relative py-24 px-6 sm:px-10">
+                <div class="mx-auto max-w-[1100px]">
+                    <h2 class="text-2xl text-title font-semibold mb-6">Work Experience</h2>
+                    <div class="bg-[rgba(255,255,255,0.14)] backdrop-blur-sm rounded-2xl p-6">
+                        <Experience data={portfolioContent.experiences} />
+                    </div>
+                </div>
+            </section>
+
+            <section id="projectsSection" class="relative py-20 px-6 sm:px-10">
+                <div class="mx-auto max-w-[1100px]">
+                    <h2 class="text-2xl text-title font-semibold mb-6">Projects</h2>
+                    <PersonalProjects data={portfolioContent.projects} />
+                </div>
+            </section>
+
+            <section id="gallerySection" class="relative py-20 px-6 sm:px-10">
+                <div class="mx-auto max-w-[1100px]">
+                    <h2 class="text-2xl text-title font-semibold mb-6">Art</h2>
+                    <Gallery data={portfolioContent.gallery} />
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer id="contactSection" class="relative py-12 px-6 sm:px-10 bg-background border-t border-background-tertiary">
+        <div class="mx-auto max-w-[1100px] flex justify-between items-center gap-16">
+            <div class="space-y-2">
+                <div class="text-2xl font-semibold text-primary">S.H.J</div>
+                <!-- <div class="text-sm text-secondary">Sean Ho Junxian</div> -->
+            </div>
+
+            <div class="flex gap-16">
+                <div>
+                    <div class="text-xs text-title uppercase tracking-wide">Menu</div>
+                    <div class="mt-4 flex flex-col gap-2 text-primary text-sm">
+                        <a href="#top" class="hover:text-secondary">About</a>
+                        <a href="#projectsSection" class="hover:text-secondary">Projects</a>
+                        <a href="#gallerySection" class="hover:text-secondary">Art</a>
+                        <a href="#experienceSection" class="hover:text-secondary">Experience</a>
+                        <a href="#contactSection" class="hover:text-secondary">Contact</a>
+                    </div>
                 </div>
 
-                <div class="mt-24 flex flex-col gap-24">
-                    <Experience data={portfolioContent.experiences} />
-                    <Education data={portfolioContent.education} />
-                    <Skills data={portfolioContent.skills} />
-                    <PersonalProjects data={portfolioContent.projects} />
-                    <Gallery data={portfolioContent.gallery} />
+                <div>
+                    <div class="text-xs text-title uppercase tracking-wide">Contact</div>
+                    <div class="mt-4 flex flex-col gap-2 text-primary text-sm">
+                        <a href={portfolioContent.introduction.linkedInSocialLink} class="hover:text-secondary">LinkedIn</a>
+                        <a href="https://github.com" class="hover:text-secondary">Github</a>
+                        <a href={portfolioContent.introduction.emailAddress} class="hover:text-secondary">Email</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="mt-10 text-center text-xs text-faint">
+            &copy; 2026 S.H.J
+        </div>
+    </footer>
 </div>
