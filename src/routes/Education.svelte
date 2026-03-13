@@ -4,7 +4,7 @@
     
 </script>
 
-<div id="educationSection" class="flex flex-col justify-start w-full">
+<div id="educationSection" class="flex flex-col justify-start w-full scroll-mt-24">
     <div class="text-faint text-xs font-extrabold uppercase">Education</div>
     <div class="flex flex-col items-start justify-center mt-4">
         <div class="flex w-full">

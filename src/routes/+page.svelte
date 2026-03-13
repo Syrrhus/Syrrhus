@@ -27,6 +27,65 @@
             }
         ],
         education: {
+            image: "/SUTDlogo.png",
+            school: "Singapore University of Technology and Design (SUTD)",
+            degree: "Bachelor of Engineering (BEng), Computer Science and Design",
+            graduationYear: "2026"
+        },
+        skills: [
+            {
+                icon: `<svg class="h-4 w-4 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19.8 3.77a6.25 6.25 0 0 0-8.63-1.913L6.11 5.081a6.25 6.25 0 0 0-1.973 8.532a6.25 6.25 0 0 0 8.693 8.53l5.06-3.224a6.25 6.25 0 0 0 1.974-8.532A6.25 6.25 0 0 0 19.8 3.77m-1.352 5.004A6.26 6.26 0 0 0 15.65 7.5a1 1 0 0 0-1.525-1.003L9.066 9.72a1 1 0 1 0 1.075 1.686l2.109-1.343a4.25 4.25 0 1 1 4.567 7.17l-5.06 3.223a4.25 4.25 0 0 1-6.203-5.23A6.25 6.25 0 0 0 8.35 16.5a1 1 0 0 0 1.525 1.003l5.06-3.224a1 1 0 0 0-1.074-1.687l-2.109 1.344a4.25 4.25 0 0 1-4.567-7.17l5.06-3.223a4.25 4.25 0 0 1 6.203 5.23"/></svg>`,
+                text: "Svelte"
+            }
+        ],
+        projects: [
+            {
+                name: "60 Singapore Objects",
+                technology: "Data visualisation, interactive storytelling",
+                description:
+                    "An interactive feature for SG60 that showcases 60 iconic objects from Singapore's history through a retro stereoscope-inspired experience.",
+                image: "https://media.licdn.com/dms/image/sync/v2/D5627AQFFsAMuu6nYdg/articleshare-shrink_160/B56ZfyNsikHoAk-/0/1752115366631?e=1773680400&v=beta&t=9B7R5w_1ttrliB6-3bK1FpbGaGWJzKavfrMhNq8GdU4",
+                link: "https://www.straitstimes.com/multimedia/graphics/2025/07/SG60-objects/index.html?shell"
+            },
+            {
+                name: "A love letter: 60 tastes, traits and things that make Singapore home",
+                technology: "Data visualisation, longform feature",
+                description:
+                    "A longform interactive that celebrates Singapore’s 60th birthday through 60 defining tastes, traits and things that make the country feel like home.",
+                image: "https://dummyimage.com/640x360/111111/ffffff&text=60+Tastes+Traits+Things",
+                link: "https://www.straitstimes.com/multimedia/graphics/2025/08/sg60-love-letter/index.html"
+            }
+        ],
+        gallery: [
+            {
+                image: "seattle1.jpg",
+                text: "Show your hometown!"
+            },
+            {
+                image: "seattle2.jpg",
+                text: "My office."
+            },
+            {
+                component: Button1,
+                text: "You can even show off components!"
+            }
+        ]
+    };
+
+    /*
+     * Older sections are kept below (commented) in case
+     * you want to re-enable them later.
+     */
+    /*
+        experiences: [
+            {
+                company: "The Straits Times",
+                role: "Data Visualisation Developer Intern",
+                duration: "Feb 2025 – Aug 2025",
+                image: "/STlogo.png"
+            }
+        ],
+        education: {
             image: "SUTDlogo.png",
             school: "Singapore University of Technology and Design (SUTD)",
             degree: "Bachelor of Engineering (BEng), Computer Science and Design",
@@ -107,30 +166,46 @@
             }
         ]
     }
+    */
 
 </script>
 
-<div class="overflow-x-hidden bg-background flex flex-col justify-center items-center relative">
-    <div class="w-full max-w-[680px] flex flex-col my-24 lg:px-0 px-5 mb-[100px] sm:mb-[200px]">
-        
-        <Introduction data={portfolioContent.introduction}/>
-        <Experience data={portfolioContent.experiences}/>
-        <Education data={portfolioContent.education}/>
-        <Skills data={portfolioContent.skills}/>
-        <div class="w-full h-[1px] bg-gradient-to-r from-zinc-900 to-zinc-900 via-zinc-800 my-12 mb-16"></div>
-        <div class="mb-4 flex flex-col items-center">
-            <div class="text-3xl text-primary font-bold">My Work</div>
-            <!-- <div class="text-faint font-thin mt-1">Collected across various projects.</div> -->
+<div
+    class="w-full overflow-x-hidden bg-background"
+>
+    <div
+        class="relative w-full"
+        style="background-image: url('/Cloud-upscaled.png'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+    >
+        <nav class="fixed top-0 left-0 right-0 z-20 bg-transparent">
+            <div class="mx-auto w-full max-w-[1100px] px-6 sm:px-10 h-14 flex items-center justify-between">
+                <a href="#top" class="text-primary font-semibold tracking-tight">Sean Ho Junxian</a>
+                <div class="flex items-center gap-4 text-sm text-faint">
+                    <a class="hover:text-secondary" href="#aboutSection">About</a>
+                    <a class="hover:text-secondary" href="#experienceSection">Experience</a>
+                    <a class="hover:text-secondary" href="#educationSection">Education</a>
+                    <a class="hover:text-secondary" href="#skillsSection">Skills</a>
+                    <a class="hover:text-secondary" href="#projectsSection">Projects</a>
+                    <a class="hover:text-secondary" href="#gallerySection">Gallery</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Make page height longer over the background image. -->
+        <div id="top" class="min-h-[320vh]">
+            <div class="mx-auto w-full max-w-[1100px] px-6 sm:px-10 pb-20">
+                <div class="min-h-screen pt-24 flex items-center">
+                    <Introduction data={portfolioContent.introduction} />
+                </div>
+
+                <div class="mt-24 flex flex-col gap-24">
+                    <Experience data={portfolioContent.experiences} />
+                    <Education data={portfolioContent.education} />
+                    <Skills data={portfolioContent.skills} />
+                    <PersonalProjects data={portfolioContent.projects} />
+                    <Gallery data={portfolioContent.gallery} />
+                </div>
+            </div>
         </div>
-        <PersonalProjects data={portfolioContent.projects}/>
-        <Gallery data={portfolioContent.gallery}/>
     </div>
-    <div class="bg-gradient-to-b from-background to-background-secondary bg-background h-[200px] w-full">
-    </div>
-    <button onclick={() => window.open("https://www.coastalui.com/", "_blank")} class="absolute bottom-3 left-1/2 -translate-x-1/2 text-faint text-sm flex items-center cursor-pointer">
-        <svg class="text-tertiary mr-1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M23 18H1l7.25-9.67l2 2.67L14 6zm-11.5-5.33L14 16h5l-5-6.67zM5 16h6.5l-3.25-4.33z" />
-        </svg>
-        Coastal UI Homepage
-    </button>
 </div>

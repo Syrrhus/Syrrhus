@@ -16,7 +16,7 @@
 
 </script>
 
-<div id="gallerySection" class="flex flex-col justify-start w-full mt-12">
+<div id="gallerySection" class="flex flex-col justify-start w-full mt-12 scroll-mt-24">
     <div class="text-faint text-xs font-extrabold uppercase">Gallery</div>
     <div class="w-full h-[450px] mt-6 rounded-md bg-radial from-background-secondary to-background overflow-hidden relative border border-background-tertiary">
         <div class="absolute inset-0 flex items-center justify-center">

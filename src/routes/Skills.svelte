@@ -7,7 +7,7 @@
     let { data } = $props();
 
 </script>
-<div id="experienceSection" class="flex flex-col justify-start w-full">
+<div id="skillsSection" class="flex flex-col justify-start w-full scroll-mt-24">
     <div class="text-faint text-xs font-extrabold uppercase">Technical Skills</div>
     <div class="flex flex-wrap mt-4 gap-1.5">
         {#each data as skill}

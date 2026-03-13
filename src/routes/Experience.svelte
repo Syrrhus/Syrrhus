@@ -2,7 +2,7 @@
     let { data } = $props();
 </script>
 
-<div id="experienceSection" class="flex flex-col justify-start w-full mt-12">
+<div id="experienceSection" class="flex flex-col justify-start w-full mt-12 scroll-mt-24">
     <div class="text-faint text-xs font-extrabold uppercase">Experience</div>
     <div class="flex flex-col items-start justify-center mt-6">
         {#each data as experience, index}

@@ -3,13 +3,14 @@
     let { data } = $props();
 </script>
 
-<div id="experienceSection" class="flex flex-col justify-start w-full mt-12">
+<div id="projectsSection" class="flex flex-col justify-start w-full mt-12 scroll-mt-24">
     <div class="text-faint text-xs font-extrabold uppercase">Projects</div>
     <div class="grid items-start justify-center mt-6 grid-cols-1 gap-6 sm:grid-cols-2">
         {#each data as project}
             <div class="p-4 flex flex-col bg-radial from-background-secondary to-background rounded-md border border-background-tertiary">
                 <img 
-                    src={project.image} 
+                    src={project.image}
+                    alt="{project.name} thumbnail"
                     class="w-full aspect-video bg-background-tertiary rounded-md origin-top object-fill"
                 />   
                 <div class="flex flex-col h-full mt-4">
