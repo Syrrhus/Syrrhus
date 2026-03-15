@@ -50,11 +50,23 @@
                     if (event.key === 'Enter' || event.key === ' ') openModal(item);
                 }}
             >
-                <img
-                    src={item.image}
-                    alt={item.text}
-                    class="gallery-image"
-                />
+                {#if item.images}
+                    <div class="grid grid-cols-2 gap-1">
+                        {#each item.images.slice(0, 4) as img, i}
+                            <img
+                                src={img}
+                                alt={`${item.text} ${i + 1}`}
+                                class="gallery-image-small"
+                            />
+                        {/each}
+                    </div>
+                {:else}
+                    <img
+                        src={item.image}
+                        alt={item.text}
+                        class="gallery-image"
+                    />
+                {/if}
                 <div class="gallery-text">
                     {item.text}
                 </div>
@@ -93,13 +105,26 @@
             >
                 <X class="w-6 h-6" />
             </button>
-            <img
-                src={selectedItem.image}
-                alt={selectedItem.text}
-                class="modal-image"
-            />
-            <div class="text-secondary">
-                {selectedItem.text}
+            {#if selectedItem.images}
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    {#each selectedItem.images as img, i}
+                        <img
+                            src={img}
+                            alt={`${selectedItem.text} ${i + 1}`}
+                            class="modal-image-small"
+                        />
+                    {/each}
+                </div>
+            {:else}
+                <img
+                    src={selectedItem.image}
+                    alt={selectedItem.text}
+                    class="modal-image"
+                />
+            {/if}
+            <div class="text-secondary text-center mt-4">
+                <h3 class="text-lg font-semibold mb-2">{selectedItem.text}</h3>
+                <p class="text-sm leading-relaxed">{selectedItem.description}</p>
             </div>
         </div>
     </div>
@@ -112,23 +137,29 @@
         max-width: 260px;
         flex-shrink: 0;
         border-radius: 1rem;
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(12px);
+        background: rgba(0,0,0,0.10);
+        backdrop-filter: blur(5px);
             padding: 1rem;
         cursor: pointer;
         transition: all 0.3s;
     }
 
     .gallery-item:hover {
-        transform: scale(1.05);
-        background: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.18);
     }
 
     .gallery-image {
         width: 100%;
-        height: 10rem;
+        height: 15rem;
         border-radius: 0.75rem;
         object-fit: cover;
+    }
+
+    .gallery-image-small {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 0.5rem;
     }
 
     .gallery-text {
@@ -145,16 +176,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.7);
         backdrop-filter: blur(4px);
     }
 
     .modal-content {
         position: relative;
-        max-width: 28rem;
+        max-width: 50rem;
         width: 100%;
         margin: 0 1rem;
-        background: rgba(11, 11, 12, 0.9);
+        background: rgba(11, 11, 12, 0.95);
         backdrop-filter: blur(12px);
         border-radius: 1rem;
         padding: 1.5rem;
@@ -162,10 +193,17 @@
 
     .modal-image {
         width: 100%;
-        height: 16rem;
+        max-height: 70vh;
         border-radius: 0.75rem;
-        object-fit: cover;
+        object-fit: contain;
         margin-bottom: 1rem;
+    }
+
+    .modal-image-small {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 0.5rem;
     }
 
     .close-button {

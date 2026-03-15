@@ -10,7 +10,7 @@ const config = {
 	kit: {
 		// GitHub Pages serves the site from /<repo>/ (not from root), so we set `paths.base`.
 		paths: {
-			base: '/Syrrhus'
+			base: process.env.NODE_ENV === 'production' ? '/Syrrhus' : ''
 		},
 		adapter: adapter({
 			pages: 'build',

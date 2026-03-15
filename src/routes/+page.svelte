@@ -35,7 +35,7 @@
             <section id="experienceSection" class="relative py-24 px-6 sm:px-10">
                 <div class="mx-auto max-w-[1100px]">
                     <h2 class="text-2xl text-title font-semibold mb-6">Work Experience</h2>
-                    <div class="bg-[rgba(255,255,255,0.14)] backdrop-blur-sm rounded-2xl p-6">
+                    <div class="bg-[rgba(0,0,0,0.10)] backdrop-blur-sm rounded-2xl p-6">
                         <Experience data={portfolioContent.experiences} />
                     </div>
                 </div>

@@ -42,7 +42,7 @@
 <style>
     .timeline-line {
         width: 2px;
-        background-color: var(--color-background-tertiary);
+        background-color: var(--color-title);
     }
 
     .company-name {
@@ -57,12 +57,12 @@
     }
 
     .duration-text {
-        color: #706767;
+        color: #d4d4d4;
         font-size: 0.875rem;
     }
 
     .pulse-dot {
-        background-color: #16a34a;
+        background-color: #9c9c9c;
         border-color: #15803d;
         animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
