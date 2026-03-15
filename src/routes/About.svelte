@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from '$app/paths';
     let { data } = $props();
 </script>
 
@@ -9,7 +10,7 @@
             <div class="flex flex-col md:flex-row items-center gap-6">
                 <div class="flex-shrink-0">
                     <img
-                        src="/portraitface.JPG"
+                        src="{base}/portraitface.JPG"
                         alt="Profile picture"
                         class="w-60 h-60 rounded-full object-cover border-2 border-primary/20"
                     />
@@ -19,7 +20,7 @@
                         {data.description}
                     </p>
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
 </section>
