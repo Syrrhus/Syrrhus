@@ -7,6 +7,10 @@ export const portfolioContent = {
         emailAddress: "mailto:seanhojunxian@gmail.com",
         linkedInSocialLink: "https://www.linkedin.com/in/seanhojunxian/"
     },
+    about: {
+        title: "About Me",
+        description: "Nice to meet you! I'm Sean.\n\nI'm a passionate developer and designer with a keen interest in creating meaningful digital experiences. My journey spans from data visualization and interactive storytelling to game development and digital art. I believe in the power of technology to tell compelling stories and solve real-world problems."
+    },
     experiences: [
         {
             company: "Finsurge",
@@ -32,7 +36,7 @@ export const portfolioContent = {
             technology: "Data visualisation, interactive storytelling",
             description:
                 "An interactive feature for SG60 that showcases 60 iconic objects from Singapore's history through a retro stereoscope-inspired experience.",
-            modalDescription: "This comprehensive interactive project was created to celebrate Singapore's 60th year of independence by bringing historical artifacts to life through modern web technology. The retro stereoscope interface provides an immersive way for users to explore paired historical images and detailed information about each object. The project involved extensive research into Singapore's history, careful curation of 60 significant objects, and the development of a custom interactive interface that makes historical content engaging and accessible to contemporary audiences. The stereoscope metaphor creates a sense of depth and nostalgia while presenting factual information in an entertaining format.",
+            modalDescription: "",
             image: "https://media.licdn.com/dms/image/sync/v2/D5627AQFFsAMuu6-3bK1FpbGaGWJzKavfrMhNq8GdU4",
             link: "https://www.straitstimes.com/multimedia/graphics/2025/07/SG60-objects/index.html?shell"
         },

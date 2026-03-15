@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Introduction from './Introduction.svelte';
+	import About from './About.svelte';
 	import Experience from './Experience.svelte';
 	import PersonalProjects from './PersonalProjects.svelte';
 	import Gallery from './Gallery.svelte';
@@ -17,6 +18,7 @@
             <div class="mx-auto w-full max-w-[1100px] px-6 sm:px-10 h-14 flex items-center justify-between">
                 <a href="#top" class="text-primary font-semibold tracking-tight text-title">S.H.J</a>
                 <div class="flex items-center gap-6 text-sm text-secondary">
+                    <a class="hover:text-primary" href="#aboutSection">About</a>
                     <a class="hover:text-primary" href="#experienceSection">Experience</a>
                     <a class="hover:text-primary" href="#projectsSection">Projects</a>
                     <a class="hover:text-primary" href="#gallerySection">Art</a>
@@ -31,26 +33,32 @@
             </div>
         </div>
 
-        <div class="pb-24">
-            <section id="experienceSection" class="relative py-24 px-6 sm:px-10">
+        <div class="pb-12">
+            <section id="aboutSection" class="relative py-12 px-6 sm:px-10">
+                <div class="mx-auto max-w-[1100px]">
+                    <About data={portfolioContent.about} />
+                </div>
+            </section>
+
+            <section id="experienceSection" class="relative pt-8 pb-12 px-6 sm:px-10">
                 <div class="mx-auto max-w-[1100px]">
                     <h2 class="text-2xl text-title font-semibold mb-6">Work Experience</h2>
-                    <div class="bg-[rgba(0,0,0,0.10)] backdrop-blur-sm rounded-2xl p-6">
+                    <div class="bg-[rgba(0,0,0,0.10)] backdrop-blur-sm rounded-2xl p-4">
                         <Experience data={portfolioContent.experiences} />
                     </div>
                 </div>
             </section>
 
-            <section id="projectsSection" class="relative py-20 px-6 sm:px-10">
+            <section id="projectsSection" class="relative py-12 px-6 sm:px-10">
                 <div class="mx-auto max-w-[1100px]">
-                    <h2 class="text-2xl text-title font-semibold mb-6">Projects</h2>
+                    <h2 class="text-2xl text-title-medium font-semibold mb-6">Projects</h2>
                     <PersonalProjects data={portfolioContent.projects} />
                 </div>
             </section>
 
-            <section id="gallerySection" class="relative py-20 px-6 sm:px-10">
+            <section id="gallerySection" class="relative py-12 px-6 sm:px-10">
                 <div class="mx-auto max-w-[1100px]">
-                    <h2 class="text-2xl text-title font-semibold mb-6">Art</h2>
+                    <h2 class="text-2xl text-title-light font-semibold mb-6">Art</h2>
                     <Gallery data={portfolioContent.gallery} />
                 </div>
             </section>
@@ -68,10 +76,10 @@
                 <div>
                     <div class="text-xs text-title uppercase tracking-wide">Menu</div>
                     <div class="mt-4 flex flex-col gap-2 text-primary text-sm">
-                        <a href="#top" class="hover:text-secondary">About</a>
+                        <a href="#aboutSection" class="hover:text-secondary">About</a>
+                        <a href="#experienceSection" class="hover:text-secondary">Experience</a>
                         <a href="#projectsSection" class="hover:text-secondary">Projects</a>
                         <a href="#gallerySection" class="hover:text-secondary">Art</a>
-                        <a href="#experienceSection" class="hover:text-secondary">Experience</a>
                         <a href="#contactSection" class="hover:text-secondary">Contact</a>
                     </div>
                 </div>

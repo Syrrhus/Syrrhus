@@ -11,6 +11,8 @@
     --color-tertiary: rgba(190, 190, 180);
     --color-faint: rgb(150, 150, 150);
     --color-title: #3F5C7A;
+    --color-title-medium: #84afd9;
+    --color-title-light: #96b5d6;
     
     --color-background: rgba(11, 11, 12);
     --color-background-secondary: rgba(20, 20, 21);
