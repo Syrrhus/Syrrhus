@@ -75,7 +75,7 @@
             <div class="text-secondary text-center mt-4">
                 <h3 class="text-lg font-semibold mb-2">{selectedProject.name}</h3>
                 <p class="text-xs text-faint mb-2">{selectedProject.technology}</p>
-                <p class="text-sm leading-relaxed mb-4">{selectedProject.modalDescription || selectedProject.description}</p>
+                <p class="text-sm leading-relaxed mb-4 whitespace-pre-line">{selectedProject.modalDescription || selectedProject.description}</p>
                 <a 
                     href={selectedProject.link} 
                     target="_blank" 
@@ -104,7 +104,7 @@
     }
 
     .project-card:hover {
-        background: rgba(0,0,0,0.15);
+        background: rgba(255, 255, 255, 0.18);
     }
 
     .project-image {

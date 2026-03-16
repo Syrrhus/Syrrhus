@@ -9,7 +9,10 @@ export const portfolioContent = {
     },
     about: {
         title: "About Me",
-        description: "Nice to meet you! I'm Sean.\n\nI'm a passionate developer and designer with a keen interest in creating meaningful digital experiences. My journey spans from data visualization and interactive storytelling to game development and digital art. I believe in the power of technology to tell compelling stories and solve real-world problems."
+        description: "Nice to meet you! I'm Sean, a 4th-year Computer Science & Design student at SUTD.\
+        \n\nI'm a passionate developer and designer with a keen interest in creating meaningful digital experiences. \
+        My journey spans from data visualization and interactive storytelling to game development and digital art. \
+        I believe in the power of technology to tell compelling stories and solve real-world problems."
     },
     experiences: [
         {
@@ -27,7 +30,9 @@ export const portfolioContent = {
             role: "Data Visualisation Developer Intern",
             duration: "Feb 2025 – Aug 2025",
             image: "/STlogo.png",
-            description: "Developed interactive data visualizations and web experiences for Singapore's leading newspaper. Worked on multimedia storytelling projects combining journalism with cutting-edge web technologies."
+            description: "Worked as a main developer on showcase interactives for The Straits Times 180th anniversary, and \
+            on 60 Singapore Objects, an interactive article done in collaboration with National Heritage Board\
+	        Lead a project for an interactive article for SG60, doing design, development, planning and liaising with other desks."
         }
     ],
     projects: [
@@ -35,8 +40,10 @@ export const portfolioContent = {
             name: "60 Singapore Objects",
             technology: "Data visualisation, interactive storytelling",
             description:
-                "An interactive feature for SG60 that showcases 60 iconic objects from Singapore's history through a retro stereoscope-inspired experience.",
-            modalDescription: "",
+                "An interactive feature for SG60 that showcases 60 iconic objects from each year of Singapore's history through a retro-viewer inspired interactive.",
+            modalDescription: "An interactive feature for SG60 that showcases 60 iconic objects from each year of Singapore's history through a retro-viewer inspired interactive. \
+            \n\nI was the main developer for this project. I learned how to do complicated and smooth animations and transitions in svelte, \
+            and worked closely with the developer on fine tuning animations and the user experience of the page.",
             image: "https://media.licdn.com/dms/image/sync/v2/D5627AQFFsAMuu6-3bK1FpbGaGWJzKavfrMhNq8GdU4",
             link: "https://www.straitstimes.com/multimedia/graphics/2025/07/SG60-objects/index.html?shell"
         },
@@ -44,15 +51,21 @@ export const portfolioContent = {
             name: "A love letter: 60 tastes, traits and things that make Singapore home",
             technology: "Data visualisation, longform feature",
             description:
-                "A longform interactive that celebrates Singapore’s 60th birthday through 60 defining tastes, traits and things that make the country feel like home.",            modalDescription: "This emotionally resonant multimedia experience was designed as a heartfelt tribute to Singapore's 60th anniversary, exploring the intangible elements that define Singaporean identity. The project combines data visualization, personal storytelling, and interactive design to create a deeply moving exploration of national character. Users navigate through carefully categorized elements of Singaporean culture - from beloved local foods and traditions to unique social behaviors and iconic landmarks. Each section features rich multimedia content, personal anecdotes, and statistical visualizations that paint a comprehensive picture of what makes Singapore uniquely 'home' to its people. The longform format allows for a gradual, contemplative journey through the nation's soul.",            image: "https://dummyimage.com/640x360/111111/ffffff&text=60+Tastes+Traits+Things",
+                "A longform interactive that celebrates Singapore’s 60th birthday through 60 defining tastes, traits and things that make the country feel like home.", 
+            modalDescription: " A longform interactive that celebrates Singapore’s 60th birthday through 60 defining tastes, traits and things that make the country feel like home.\
+             \n\nI was team lead for this project. I worked on design, development with a tight timeline of 2 weeks up to National Day.\
+             As team lead, I had to handle liaising with the photo desk, who provided the photos for the project, for things such as dimensions and aspects of the photos, \
+             as well as the journalist desk, for any part of the project that required any writeups.",
             link: "https://www.straitstimes.com/multimedia/graphics/2025/08/sg60-love-letter/index.html"
         },
         {
             name: "Shady Sweatshop",
             technology: "Unity, Game Development",
             description:
-                "A Unity game featuring fast-paced gameplay and challenging levels. Experience the thrill of managing a sweatshop in this unique action game.",
-            modalDescription: "Shady Sweatshop is a satirical action game developed in Unity that combines fast-paced gameplay with social commentary. Players take on the role of a sweatshop manager in a darkly humorous setting, balancing the demands of production quotas, worker management, and ethical decision-making. The game features quick-time events, resource management mechanics, and branching narratives that explore the absurdities and moral complexities of exploitative business practices. With challenging levels that increase in difficulty and complexity, players must navigate the fine line between profitability and humanity. The game serves as both entertainment and a thought-provoking commentary on labor practices, wrapped in a package of addictive gameplay and witty writing.",
+                "A business management game with a humorous take on the sweatshop industry. Players manage a sweatshop, balancing profit and worker welfare while navigating challenges and ethical dilemmas.",
+            modalDescription: "A business management game built in a 6-person team using Unity. \
+            Created sprite sheets with multiple animations for each character, wrote and illustrated the storyline, and designed emote system. \
+            Designed from concept to paper prototype to full digital build.",
             image: "https://dummyimage.com/640x360/222222/ffffff&text=Shady+Sweatshop",
             link: "https://play.unity.com/en/games/9ea5b9fb-839a-4e9a-9a06-08457b49e64b/shady-sweatshop"
         }
