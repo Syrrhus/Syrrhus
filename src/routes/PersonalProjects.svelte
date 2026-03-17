@@ -1,35 +1,36 @@
-<script>
-	import { ExternalLinkIcon, X } from "lucide-svelte";
-    let { data } = $props();
+<script lang="ts">
+	let { data, onSelect } = $props<{ data: any[], onSelect: (p: any, rect: DOMRect, el: HTMLElement) => void }>();
 
-    let selectedProject = $state(null);
-
-    function openModal(project) {
-        selectedProject = project;
-    }
-
-    function closeModal() {
-        selectedProject = null;
+    function jellyClick(node: HTMLElement) {
+        function handleClick() {
+            node.classList.remove('jelly-click');
+            void node.offsetWidth;
+            node.classList.add('jelly-click');
+        }
+        node.addEventListener('click', handleClick);
+        return { destroy() { node.removeEventListener('click', handleClick); } };
     }
 </script>
 
 <div class="flex flex-col justify-start w-full mt-6 scroll-mt-24">
     <div class="grid items-start justify-center grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
-        {#each data as project}
-            <div 
+        {#each data as project, i}
+            <div
                 class="project-card"
                 role="button"
                 tabindex="0"
-                onclick={() => openModal(project)}
+                data-flip-id={`project-${i}`}
+                use:jellyClick
+                onclick={(e) => { const el = e.currentTarget as HTMLElement; const rect = el.getBoundingClientRect(); setTimeout(() => onSelect(project, rect, el), 180); }}
                 onkeydown={(event) => {
-                    if (event.key === 'Enter' || event.key === ' ') openModal(project);
+                    if ((event as KeyboardEvent).key === 'Enter' || (event as KeyboardEvent).key === ' ') onSelect(project);
                 }}
             >
-                <img 
+                <img
                     src={project.image}
                     alt={`${project.name} thumbnail`}
                     class="project-image"
-                />   
+                />
                 <div class="flex flex-col h-full mt-3">
                     <div class="flex justify-between items-start gap-2">
                         <div class="project-name">{project.name}</div>
@@ -46,52 +47,7 @@
     </div>
 </div>
 
-{#if selectedProject}
-    <div
-        class="modal-backdrop"
-        onclick={closeModal}
-        onkeydown={(event) => {
-            if (event.key === 'Escape') closeModal();
-        }}
-    >
-        <div
-            role="dialog"
-            tabindex="-1"
-            class="modal-content"
-            onpointerdown={(e) => e.stopPropagation()}
-        >
-            <button
-                onclick={closeModal}
-                class="close-button"
-                aria-label="Close modal"
-            >
-                <X class="w-6 h-6" />
-            </button>
-            <img
-                src={selectedProject.image}
-                alt={selectedProject.name}
-                class="modal-image"
-            />
-            <div class="text-secondary text-center mt-4">
-                <h3 class="text-lg font-semibold mb-2">{selectedProject.name}</h3>
-                <p class="text-xs text-faint mb-2">{selectedProject.technology}</p>
-                <p class="text-sm leading-relaxed mb-4 whitespace-pre-line">{selectedProject.modalDescription || selectedProject.description}</p>
-                <a 
-                    href={selectedProject.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 hover:bg-primary/30 rounded-full text-sm font-medium transition-colors"
-                >
-                    View Project
-                    <ExternalLinkIcon class="h-4 w-4" />
-                </a>
-            </div>
-        </div>
-    </div>
-{/if}
-
 <style>
-    /* Styles for project cards */
     .project-card {
         padding: 0.75rem;
         display: flex;
@@ -99,8 +55,21 @@
         background: rgba(0,0,0,0.10);
         backdrop-filter: blur(5px);
         border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
         cursor: pointer;
-        transition: all 0.3s;
+        transition: background 0.3s;
+    }
+
+    .project-card:global(.jelly-click) {
+        animation: jellyClick 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes jellyClick {
+        0%   { transform: scale(1); }
+        25%  { transform: scale(0.93); }
+        50%  { transform: scale(1.04); }
+        85%  { transform: scale(0.98); }
+        100% { transform: scale(1); }
     }
 
     .project-card:hover {
@@ -152,65 +121,5 @@
             margin-top: 0.5rem;
             line-height: 1.4;
         }
-    }
-
-    .project-link {
-        margin-top: 1.25rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        border-radius: 9999px;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 0.5rem 1rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--color-primary);
-        transition: background-color 0.2s;
-    }
-
-    .project-link:hover {
-        background: rgba(255, 255, 255, 0.15);
-    }
-
-    /* Modal styles */
-    .modal-backdrop {
-        position: fixed;
-        inset: 0;
-        z-index: 50;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(4px);
-    }
-
-    .modal-content {
-        position: relative;
-        max-width: 40rem;
-        width: 100%;
-        margin: 0 1rem;
-        background: rgba(11, 11, 12, 0.95);
-        backdrop-filter: blur(12px);
-        border-radius: 1rem;
-        padding: 1.5rem;
-    }
-
-    .modal-image {
-        width: 100%;
-        max-height: 60vh;
-        border-radius: 0.75rem;
-        object-fit: contain;
-        margin-bottom: 1rem;
-    }
-
-    .close-button {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        color: var(--color-secondary);
-        background: none;
-        border: none;
-        cursor: pointer;
     }
 </style>

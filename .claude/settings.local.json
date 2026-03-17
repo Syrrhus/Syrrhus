@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(magick \"c:/Users/user/PortfolioCoed/Syrrhus/Syrrhus/static/Signature.PNG\" -trim +repage \"c:/Users/user/PortfolioCoed/Syrrhus/Syrrhus/static/Signature.PNG\")",
+      "Bash(where convert:*)",
+      "Bash(where ffmpeg:*)",
+      "Bash(where python:*)",
+      "Bash(where python3:*)",
+      "Bash(node -e \"require\\(''sharp''\\)\")",
+      "Bash(python -c \":*)",
+      "Bash(npm install:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:api.github.com)"
+    ]
+  }
+}

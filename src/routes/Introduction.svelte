@@ -36,7 +36,7 @@
         text-transform: uppercase;
         letter-spacing: 0.0em;
         white-space: pre-line;
-        font-size: clamp(3rem, 7vw, 6.5rem);
+        font-size: clamp(4rem, 7vw, 6.5rem);
         line-height: 1.0;
     }
 </style>
