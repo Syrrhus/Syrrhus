@@ -14,7 +14,7 @@
 </script>
 
 <div class="flex flex-col justify-start w-full mt-6 scroll-mt-24">
-    <div class="grid items-start justify-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="grid items-start justify-center grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
         {#each data as project}
             <div 
                 class="project-card"
@@ -132,6 +132,26 @@
         margin-top: 1rem;
         font-size: 0.875rem;
         line-height: 1.625;
+    }
+
+    @media (max-width: 639px) {
+        .project-card {
+            padding: 0.5rem;
+        }
+
+        .project-name {
+            font-size: 0.875rem;
+        }
+
+        .project-tech {
+            font-size: 0.625rem;
+        }
+
+        .project-description {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            line-height: 1.4;
+        }
     }
 
     .project-link {
