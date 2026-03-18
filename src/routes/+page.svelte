@@ -28,22 +28,32 @@
     onMount(async () => {
         gsap = (await import('gsap')).gsap;
 
+        const MAX_STRETCH = 1.1; // ← edit this to control max squish (1.0 = none, 1.2 = heavy)
+
         let currentScale = 1;
         let targetScale = 1;
         let scrollDir = 'down';
         let lastScrollY = window.scrollY;
         let lastTime = performance.now();
         let rafId: number;
+        let lastOrigin = '';
+
+        // Cache children once and promote to compositor layers
+        const sectionChildren = Array.from(sectionsEl.children) as HTMLElement[];
+        for (const child of sectionChildren) {
+            child.style.willChange = 'transform';
+        }
 
         function scrollTick() {
             currentScale += (targetScale - currentScale) * 0.16;
-            targetScale += (1 - targetScale) * 0.05;
-            if (sectionsEl) {
-                const origin = scrollDir === 'down' ? 'bottom center' : 'top center';
-                for (const child of sectionsEl.children) {
-                    (child as HTMLElement).style.transform = `scaleY(${currentScale})`;
-                    (child as HTMLElement).style.transformOrigin = origin;
-                }
+            targetScale += (1 - targetScale) * 0.35;
+            const origin = scrollDir === 'down' ? 'bottom center' : 'top center';
+            const transform = `scaleY(${currentScale})`;
+            const originChanged = origin !== lastOrigin;
+            if (originChanged) lastOrigin = origin;
+            for (const child of sectionChildren) {
+                child.style.transform = transform;
+                if (originChanged) child.style.transformOrigin = origin;
             }
             if (Math.abs(currentScale - 1) > 0.0002 || Math.abs(targetScale - 1) > 0.0002) {
                 rafId = requestAnimationFrame(scrollTick);
@@ -54,7 +64,7 @@
             const now = performance.now();
             const dy = window.scrollY - lastScrollY;
             const dt = Math.max(now - lastTime, 1);
-            targetScale = 1 + Math.min(Math.abs(dy / dt) * 0.06, 0.8);
+            targetScale = 1 + Math.min(Math.abs(dy / dt) * 0.06, MAX_STRETCH - 1);
             scrollDir = dy >= 0 ? 'down' : 'up';
             document.body.dataset.scrollDir = scrollDir;
             lastScrollY = window.scrollY;
@@ -67,6 +77,9 @@
         return () => {
             window.removeEventListener('scroll', onScroll);
             cancelAnimationFrame(rafId);
+            for (const child of sectionChildren) {
+                child.style.willChange = '';
+            }
         };
     });
 
@@ -191,7 +204,7 @@
             <section id="experienceSection" class="relative pt-8 pb-12 px-6 sm:px-10">
                 <div class="mx-auto max-w-[1100px]">
                     <h2 class="text-2xl text-title font-semibold mb-6">Work Experience</h2>
-                    <div class="bg-[rgba(0,0,0,0.10)] backdrop-blur-sm rounded-2xl p-4" style="border: 1px solid rgba(255, 255, 255, 0.2)">
+                    <div class="rounded-2xl p-4 liquid-glass">
                         <Experience data={portfolioContent.experiences} />
                     </div>
                 </div>
@@ -385,5 +398,16 @@
 
     .close-button:hover {
         color: var(--color-primary);
+    }
+
+    :global(.liquid-glass) {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.25) 100%);
+        backdrop-filter: blur(5px) saturate(120%);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.28),
+            inset 0 -3px 0 rgba(0,0,0,0.12),
+            inset 2px 0 0 rgba(255,255,255,0.08),
+            0 6px 15px rgba(0,0,0,0.35);
     }
 </style>

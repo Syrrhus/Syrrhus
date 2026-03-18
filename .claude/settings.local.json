@@ -10,7 +10,12 @@
       "Bash(python -c \":*)",
       "Bash(npm install:*)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "WebFetch(domain:api.github.com)"
+      "WebFetch(domain:api.github.com)",
+      "Bash(curl -s https://raw.githubusercontent.com/danilofiumi/liquid-glass-svelte/main/README.md)",
+      "Bash(curl -s https://api.github.com/repos/danilofiumi/liquid-glass-svelte/contents/src)",
+      "Bash(curl -s https://raw.githubusercontent.com/danilofiumi/liquid-glass-svelte/main/package.json)",
+      "Bash(curl -s https://raw.githubusercontent.com/danilofiumi/liquid-glass-svelte/main/src/lib/LiquidGlass.svelte)",
+      "Bash(curl -s https://raw.githubusercontent.com/danilofiumi/liquid-glass-svelte/main/src/lib/index.ts)"
     ]
   }
 }

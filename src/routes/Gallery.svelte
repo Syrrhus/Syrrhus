@@ -93,16 +93,33 @@
         max-width: 260px;
         flex-shrink: 0;
         border-radius: 1rem;
-        background: rgba(0,0,0,0.10);
-        backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.21) 0%, rgba(255,255,255,0.04) 100%);
+        backdrop-filter: blur(5px) saturate(150%);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.28),
+            inset 0 -3px 0 rgba(0,0,0,0.12),
+            inset 2px 0 0 rgba(255,255,255,0.08);
+        filter: drop-shadow(0 6px 15px rgba(0,0,0,0.35));
         padding: 1rem;
         cursor: pointer;
-        transition: background 0.3s;
+        transition: background 0.2s, box-shadow 0.2s, filter 0.2s, transform 0.2s;
     }
 
     .gallery-item:hover {
-        background: rgba(255, 255, 255, 0.18);
+        background: linear-gradient(135deg, rgba(20, 20, 20, 0.35) 0%, rgba(255,255,255,0.08) 100%);
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.38),
+            inset 0 -3px 0 rgba(0,0,0,0.1),
+            inset 2px 0 0 rgba(255,255,255,0.12);
+        filter: drop-shadow(0 12px 28px rgba(0,0,0,0.5)) brightness(1.08);
+        transform: translateY(-3px) scale(1.015);
+    }
+
+    .gallery-item:active {
+        transform: translateY(0) scale(0.97);
+        filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)) brightness(0.93);
+        transition: transform 0.08s, filter 0.08s;
     }
 
     .gallery-item:global(.jelly-click) {

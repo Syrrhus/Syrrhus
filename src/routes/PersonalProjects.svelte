@@ -52,12 +52,34 @@
         padding: 0.75rem;
         display: flex;
         flex-direction: column;
-        background: rgba(0,0,0,0.10);
-        backdrop-filter: blur(5px);
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.21) 0%, rgba(255,255,255,0.04) 100%);
+        backdrop-filter: blur(5px) saturate(150%);
         border-radius: 1rem;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.28),
+            inset 0 -3px 0 rgba(0,0,0,0.12),
+            inset 2px 0 0 rgba(255,255,255,0.08),
+            0 6px 15px rgba(0,0,0,0.35);
         cursor: pointer;
-        transition: background 0.3s;
+        transition: background 0.2s, box-shadow 0.2s, transform 0.2s, filter 0.2s;
+    }
+
+    .project-card:hover {
+        background: linear-gradient(135deg, rgba(20, 20, 20, 0.35) 0%, rgba(255,255,255,0.08) 100%);
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.38),
+            inset 0 -3px 0 rgba(0,0,0,0.1),
+            inset 2px 0 0 rgba(255,255,255,0.12),
+            0 12px 28px rgba(0,0,0,0.5);
+        transform: translateY(-3px) scale(1.015);
+        filter: brightness(1.08);
+    }
+
+    .project-card:active {
+        transform: translateY(0) scale(0.97);
+        filter: brightness(0.93);
+        transition: transform 0.08s, filter 0.08s;
     }
 
     .project-card:global(.jelly-click) {
@@ -70,10 +92,6 @@
         50%  { transform: scale(1.04); }
         85%  { transform: scale(0.98); }
         100% { transform: scale(1); }
-    }
-
-    .project-card:hover {
-        background: rgba(255, 255, 255, 0.18);
     }
 
     .project-image {
